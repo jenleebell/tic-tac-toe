@@ -9,9 +9,8 @@ var Space = function(x, y) {
 
 var Board = function() {
   this.gameArray = [];
-  for (var i = 0; i < 3; i++) {
-    this.gameArray.push(['-','-','-']);
-  };
+  for(var i = 0; i < 3; i++)
+  this.gameArray.push(['-','-','-']);
 };
 
 var Turn = function(tern, player1, player2) {
@@ -42,23 +41,45 @@ Board.prototype.markBy = function(x,y,player) {
 };
 
 Board.prototype.play = function(player, gameBoard) {
+  // if (gameBoard[0][0] == gameBoard[1][1] == gameBoard[2][2]) {
+  //   return true;
+  // } else if (gameBoard[0][0] == gameBoard[0][1] == gameBoard[0][2]) {
+  //   return true;
+  // } else if (gameBoard[0][0] == gameBoard[1][0] == gameBoard[2][0]) {
+  //   return true;
+  // } else if (gameBoard[0][1] == gameBoard[1][1] == gameBoard[2][1]) {
+  //   return true;
+  // } else if (gameBoard[0][2] == gameBoard[1][2] == gameBoard[2][2]) {
+  //   return true;
+  //   debugger;
+  // } else if (gameBoard[1][0] == gameBoard[1][2] == gameBoard[1][1]) {
+  //   return true;
+  // } else if (gameBoard[2][0] == gameBoard[2][1] == gameBoard[2][2]) {
+  //   return true;
+  // } else if (gameBoard[1][0] == gameBoard[2][1] == gameBoard[0][2]) {
+  //   return true;
+  // } else if (gameBoard[2][0] == gameBoard[1][1] == gameBoard[0][2]) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
   if ((gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === "X") || (gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === "O")) {
     return true;
-  } else if ((gameBoard[0][0] === "X" && gameBoard[1][0] === "X" && gameBoard[2][0] === "X") || (gameBoard[0][0] === "O" && gameBoard[1][0] === "0" && gameBoard[2][0] === "O")) {
+  } else if ((gameBoard[0][0] === "X" && gameBoard[1][0] === "X" && gameBoard[2][0] === "X") || (gameBoard[0][0] === "O" && gameBoard[1][0] === "O" && gameBoard[2][0] === "O")) {
     return true;
-  } else if ((gameBoard[0][1] === "X" && gameBoard[1][1] === "X" && gameBoard[2][1] === "X") || (gameBoard[0][1] === "O" && gameBoard[1][1] === "0" && gameBoard[2][1] === "O")) {
+  } else if ((gameBoard[0][1] === "X" && gameBoard[1][1] === "X" && gameBoard[2][1] === "X") || (gameBoard[0][1] === "O" && gameBoard[1][1] === "O" && gameBoard[2][1] === "O")) {
     return true;
-  } else if ((gameBoard[0][2] === "X" && gameBoard[1][2] === "X" && gameBoard[2][2] === "X") || (gameBoard[0][2] === "O" && gameBoard[1][2] === "0" && gameBoard[2][2] === "O")) {
+  } else if ((gameBoard[0][2] === "X" && gameBoard[1][2] === "X" && gameBoard[2][2] === "X") || (gameBoard[0][2] === "O" && gameBoard[1][2] === "O" && gameBoard[2][2] === "O")) {
     return true;
-  } else if ((gameBoard[0][0] === "X" && gameBoard[0][1] === "X" && gameBoard[0][2] === "X") || (gameBoard[0][0] === "O" && gameBoard[0][1] === "0" && gameBoard[0][2] === "O")) {
+  } else if ((gameBoard[0][0] === "X" && gameBoard[0][1] === "X" && gameBoard[0][2] === "X") || (gameBoard[0][0] === "O" && gameBoard[0][1] === "O" && gameBoard[0][2] === "O")) {
     return true;
-  } else if ((gameBoard[1][0] === "X" && gameBoard[1][2] === "X" && gameBoard[1][1] === "X") || (gameBoard[1][0] === "O" && gameBoard[1][2] === "0" && gameBoard[1][1] === "O")) {
+  } else if ((gameBoard[1][0] === "X" && gameBoard[1][2] === "X" && gameBoard[1][1] === "X") || (gameBoard[1][0] === "O" && gameBoard[1][2] === "O" && gameBoard[1][1] === "O")) {
     return true;
-  } else if ((gameBoard[2][0] === "X" && gameBoard[2][1] === "X" && gameBoard[2][2] === "X") || (gameBoard[2][0] === "O" && gameBoard[2][1] === "0" && gameBoard[2][2] === "O")) {
+  } else if ((gameBoard[2][0] === "X" && gameBoard[2][1] === "X" && gameBoard[2][2] === "X") || (gameBoard[2][0] === "O" && gameBoard[2][1] === "O" && gameBoard[2][2] === "O")) {
     return true;
-  } else if ((gameBoard[0][0] === "X" && gameBoard[1][1] === "X" && gameBoard[2][2] === "X") || (gameBoard[0][0] === "O" && gameBoard[1][1] === "0" && gameBoard[2][2] === "O")) {
+  } else if ((gameBoard[0][0] === "X" && gameBoard[1][1] === "X" && gameBoard[2][2] === "X") || (gameBoard[0][0] === "O" && gameBoard[1][1] === "O" && gameBoard[2][2] === "O")) {
     return true;
-  } else if ((gameBoard[0][2] === "X" && gameBoard[1][1] === "X" && gameBoard[2][0] === "X") || (gameBoard[0][2] === "O" && gameBoard[1][1] === "0" && gameBoard[2][0] === "O")) {
+  } else if ((gameBoard[0][2] === "X" && gameBoard[1][1] === "X" && gameBoard[2][0] === "X") || (gameBoard[0][2] === "O" && gameBoard[1][1] === "O" && gameBoard[2][0] === "O")) {
     return true;
   } else {
     return false;
@@ -77,13 +98,15 @@ $(document).ready(function() {
   var turn = $("td#zero-zero").click(function() {
     $("td#zero-zero").empty().append(playa.mark);
     gameBoard.markBy(0,0,playa);
+    blerg = gameBoard.play(playa, gameBoard.gameArray);
+    console.log(blerg);
+    if (blerg === true) {
+      $("h2#winner").show();
+    }
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-debugger;
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
-    }
+
 
 
   });

@@ -22,7 +22,7 @@ describe('Space', function() {
       var testBoard = new Board();
       testSpace.markBy(testPlayer, testBoard)
       expect(testSpace.markedBy(testBoard)).to.equal(testPlayer.mark);
-   });
+  });
 });
 
 
@@ -36,7 +36,7 @@ describe("Board", function() {
     testSpace1.markBy(testPlayer, testBoard);
     testSpace2.markBy(testPlayer, testBoard);
     testSpace3.markBy(testPlayer, testBoard);
-    expect(testBoard.play(testPlayer)).to.equal("Win");
+    expect(testBoard.play(testPlayer, testBoard.gameArray)).to.equal(true);
   });
 });
 

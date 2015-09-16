@@ -99,7 +99,7 @@ $(document).ready(function() {
     $("td#zero-zero").empty().append(playa.mark);
     gameBoard.markBy(0,0,playa);
     blerg = gameBoard.play(playa, gameBoard.gameArray);
-    console.log(blerg);
+    $("#zero-zero").off();
     if (blerg === true) {
       $("h2#winner").show();
     }
@@ -117,7 +117,7 @@ $(document).ready(function() {
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-
+    $("#zero-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) == true) {
       $("h2#winner").show();
     }
@@ -129,7 +129,7 @@ $(document).ready(function() {
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-
+    $("#zero-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) == true) {
       $("h2#winner").show();
     }
@@ -142,7 +142,7 @@ $(document).ready(function() {
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-
+    $("#one-zero").off();
     if (gameBoard.play(playa, gameBoard.gameArray) == true) {
       $("h2#winner").show();
     }
@@ -154,7 +154,7 @@ $(document).ready(function() {
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-
+    $("#one-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) == true) {
       $("h2#winner").show();
     }
@@ -166,7 +166,7 @@ $(document).ready(function() {
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-
+    $("#one-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) == true) {
       $("h2#winner").show();
     }
@@ -178,7 +178,7 @@ $(document).ready(function() {
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-
+    $("#two-zero").off();
     if (gameBoard.play(playa, gameBoard.gameArray) == true) {
       $("h2#winner").show();
     }
@@ -190,7 +190,7 @@ $(document).ready(function() {
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-
+    $("#two-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) == true) {
       $("h2#winner").show();
     }
@@ -202,7 +202,7 @@ $(document).ready(function() {
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
-
+    $("#two-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) == true) {
       $("h2#winner").show();
     }

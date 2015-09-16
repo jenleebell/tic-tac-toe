@@ -19,7 +19,23 @@ describe('Space', function() {
   it("lets a player mark a space", function() {
       var testPlayer = new Player("X")
       var testSpace = new Space(1,2);
-      testSpace.markBy(testPlayer)
-      expect(testSpace.markedBy()).to.equal(testPlayer.mark);
+      var testBoard = new Board();
+      testSpace.markBy(testPlayer, testBoard)
+      expect(testSpace.markedBy(testBoard)).to.equal(testPlayer.mark);
    });
+});
+
+
+describe("Board", function() {
+  it("returns wins", function() {
+    var testPlayer = new Player("X")
+    var testSpace1 = new Space(0,0);
+    var testSpace2 = new Space(1,1);
+    var testSpace3 = new Space(2,2);
+    var testBoard = new Board();
+    testSpace1.markBy(testPlayer, testBoard);
+    testSpace2.markBy(testPlayer, testBoard);
+    testSpace3.markBy(testPlayer, testBoard);
+    expect(testBoard.play(testPlayer)).to.equal("Win");
+  });
 });

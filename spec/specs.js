@@ -39,3 +39,26 @@ describe("Board", function() {
     expect(testBoard.play(testPlayer)).to.equal("Win");
   });
 });
+
+describe("Turn", function() {
+  it("changes player and returns the turn", function(){
+    var testPlayerX = new Player("X");
+    var testPlayerO = new Player("O");
+    var testSpace1 = new Space(0,0);
+    var testBoard = new Board();
+    var testTurnArr = new Turn(0, testPlayerX, testPlayerO);
+    var testTurn = testTurnArr[0];
+    var turnArr = Turn(testTurn, testPlayerX, testPlayerO);
+    var newTestTurn = turnArr[0];
+    var newPlayer = turnArr[1];
+
+    expect(newTestTurn).to.eql(0)
+    expect(newPlayer).to.equal(testPlayerO);
+
+    var newTestTurnTwo = Turn(newTestTurn, testPlayerX, testPlayerO);
+
+    expect(newTestTurnTwo[0]).to.eql(1)
+    expect(newTestTurnTwo[1]).to.eql(testPlayerX);
+
+  });
+});

@@ -1,17 +1,21 @@
 body {
-  background-color: black;
+  background-color: #dddddd;
 }
 
 td {
   height: 200px;
   width: 200px;
-  border: 6px solid #fff;
+  border: 6px solid #000;
+}
+
+h1, td {
   text-align: center;
-  color: #fff;
 }
 
 
 table {
+  width: 300px;
   margin-top: 5%;
-  border-top: 6px solid #fff;
+  border-top: 6px solid #000;
+  border-bottom: none;
 }

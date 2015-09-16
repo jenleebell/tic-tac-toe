@@ -1,0 +1,17 @@
+body {
+  background-color: black;
+}
+
+td {
+  height: 200px;
+  width: 200px;
+  border: 6px solid #fff;
+  text-align: center;
+  color: #fff;
+}
+
+
+table {
+  margin-top: 5%;
+  border-top: 6px solid #fff;
+}

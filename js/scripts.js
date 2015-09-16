@@ -26,7 +26,24 @@ Space.prototype.markedBy = function(board) {
 Board.prototype.play = function(player) {
   if (this.gameArray[0][0] && this.gameArray[1][1] && this.gameArray[2][2]) {
     return "Win";
+  } else if (this.gameArray[0][0] && this.gameArray[0][1] && this.gameArray[0][2]) {
+    return "Win";
+  } else if (this.gameArray[0][0] && this.gameArray[1][0] && this.gameArray[2][0]) {
+    return "Win";
+  } else if (this.gameArray[0][1] && this.gameArray[1][1] && this.gameArray[2][1]) {
+    return "Win";
+  } else if (this.gameArray[0][2] && this.gameArray[1][2] && this.gameArray[2][2]) {
+    return "Win";
+  } else if (this.gameArray[1][0] && this.gameArray[1][2] && this.gameArray[1][1]) {
+    return "Win";
+  } else if (this.gameArray[2][0] && this.gameArray[2][1] && this.gameArray[2][2]) {
+    return "Win";
+  } else if (this.gameArray[1][0] && this.gameArray[2][1] && this.gameArray[0][2]) {
+    return "Win";
+  } else if (this.gameArray[2][0] && this.gameArray[1][1] && this.gameArray[0][2]) {
+    return "Win";
   } else {
     return false;
   }
+
 };

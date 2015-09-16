@@ -6,8 +6,13 @@ describe("Player", function() {
 });
 
 describe('Space', function() {
-  it("returns the x coordinate", function() {
+  it("returns the x-coordinate", function() {
     var testSpace = new Space(1,2);
     expect(testSpace.xcoordinate).to.equal(1);
+  });
+
+  it("returns the y-coordinate", function() {
+    var testSpace = new Space(1,2);
+    expect(testSpace.ycoordinate).to.equal(2);
   });
 });

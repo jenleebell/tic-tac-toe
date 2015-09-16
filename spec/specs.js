@@ -15,4 +15,11 @@ describe('Space', function() {
     var testSpace = new Space(1,2);
     expect(testSpace.ycoordinate).to.equal(2);
   });
+
+  it("lets a player mark a space", function() {
+      var testPlayer = new Player("X")
+      var testSpace = new Space(1,2);
+      testSpace.markBy(testPlayer)
+      expect(testSpace.markedBy()).to.equal(testPlayer.mark);
+   });
 });

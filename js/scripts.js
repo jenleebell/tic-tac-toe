@@ -40,7 +40,7 @@ Board.prototype.changeTurn = function() {
 }
 
 Space.prototype.markBy = function(player, board) {
-  board.gameArray[this.xcoordinate][this.ycoordinate] = player.mark;
+  board.gameArray[this.xcoordinate][this.ycoordinate] = player.name;
 };
 
 
@@ -49,28 +49,28 @@ Space.prototype.markedBy = function(board) {
 };
 
 Board.prototype.markBy = function(x,y,player) {
-  this.gameArray[x][y] = player.mark;
+  this.gameArray[x][y] = player.name;
 };
 
 Board.prototype.play = function(player, gameBoard) {
 
   if (gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === player.mark) {
     return true;
-  } else if (gameBoard[0][0] === player.mark && gameBoard[1][0] === player.mark && gameBoard[2][0] === player.mark) {
+  } else if (gameBoard[0][0] === player.name && gameBoard[1][0] === player.name && gameBoard[2][0] === player.name) {
     return true;
-  } else if (gameBoard[0][1] === player.mark && gameBoard[1][1] === player.mark && gameBoard[2][1] === player.mark) {
+  } else if (gameBoard[0][1] === player.name && gameBoard[1][1] === player.name && gameBoard[2][1] === player.name) {
     return true;
-  } else if (gameBoard[0][2] === player.mark && gameBoard[1][2] === player.mark && gameBoard[2][2] === player.mark) {
+  } else if (gameBoard[0][2] === player.name && gameBoard[1][2] === player.name && gameBoard[2][2] === player.name) {
     return true;
-  } else if (gameBoard[0][0] === player.mark && gameBoard[0][1] === player.mark && gameBoard[0][2] === player.mark) {
+  } else if (gameBoard[0][0] === player.name && gameBoard[0][1] === player.name && gameBoard[0][2] === player.name) {
     return true;
-  } else if (gameBoard[1][0] === player.mark && gameBoard[1][2] === player.mark && gameBoard[1][1] === player.mark) {
+  } else if (gameBoard[1][0] === player.name && gameBoard[1][2] === player.name && gameBoard[1][1] === player.name) {
     return true;
-  } else if (gameBoard[2][0] === player.mark && gameBoard[2][1] === player.mark && gameBoard[2][2] === player.mark) {
+  } else if (gameBoard[2][0] === player.name && gameBoard[2][1] === player.name && gameBoard[2][2] === player.name) {
     return true;
-  } else if (gameBoard[0][0] === player.mark && gameBoard[1][1] === player.mark && gameBoard[2][2] === player.mark) {
+  } else if (gameBoard[0][0] === player.name && gameBoard[1][1] === player.name && gameBoard[2][2] === player.name) {
     return true;
-  } else if (gameBoard[0][2] === player.mark && gameBoard[1][1] === player.mark && gameBoard[2][0] === player.mark) {
+  } else if (gameBoard[0][2] === player.name && gameBoard[1][1] === player.name && gameBoard[2][0] === player.name) {
     return true;
   } else {
     return false;
@@ -125,7 +125,7 @@ $(document).ready(function() {
 
 
   $("#zero-zero").click(function() {
-    $("#zero-zero").empty().append(playa.mark);
+    $("#zero-zero").empty().append('<img src="img/' + playa.mark + '">');
     gameBoard.markBy(0,0,playa);
     blerg = gameBoard.play(playa, gameBoard.gameArray);
     $("#zero-zero").off();
@@ -140,7 +140,7 @@ $(document).ready(function() {
 
   $("#zero-one").click(function() {
     gameBoard.markBy(0,1,playa);
-    $("#zero-one").empty().append(playa.mark);
+    $("#zero-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#zero-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
@@ -152,7 +152,7 @@ $(document).ready(function() {
 
   $("#zero-two").click(function() {
     gameBoard.markBy(0,2,playa);
-    $("#zero-two").empty().append(playa.mark);
+    $("#zero-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#zero-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
@@ -164,7 +164,7 @@ $(document).ready(function() {
 
   $("#one-zero").click(function() {
     gameBoard.markBy(1,0,playa);
-    $("#one-zero").empty().append(playa.mark);
+    $("#one-zero").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-zero").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
@@ -176,7 +176,7 @@ $(document).ready(function() {
 
   $("#one-one").click(function() {
     gameBoard.markBy(1,1,playa);
-    $("#one-one").empty().append(playa.mark);
+    $("#one-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
@@ -188,7 +188,7 @@ $(document).ready(function() {
 
   $("#one-two").click(function() {
     gameBoard.markBy(1,2,playa);
-    $("#one-two").empty().append(playa.mark);
+    $("#one-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
@@ -200,7 +200,7 @@ $(document).ready(function() {
 
   $("#two-zero").click(function() {
     gameBoard.markBy(2,0,playa);
-    $("#two-zero").empty().append(playa.mark);
+    $("#two-zero").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-zero").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
@@ -212,7 +212,7 @@ $(document).ready(function() {
 
   $("#two-two").click(function() {
     gameBoard.markBy(2,2,playa);
-    $("#two-two").empty().append(playa.mark);
+    $("#two-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
@@ -224,7 +224,7 @@ $(document).ready(function() {
 
   $("#two-one").click(function() {
     gameBoard.markBy(2,1,playa);
-    $("#two-one").empty().append(playa.mark);
+    $("#two-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();

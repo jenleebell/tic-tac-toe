@@ -9,9 +9,6 @@ var Space = function(position) {
 
 var Board = function(player1, player2) {
   this.gameArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  // for(var i = 0; i < 3; i++) {
-  //   this.gameArray.push(['-','-','-']);
-  // }
   this.player1 = player1
   this.player2 = player2
   this.turn = player1
@@ -25,46 +22,29 @@ Board.prototype.changeTurn = function() {
   }
 }
 
-// Space.prototype.markBy = function(player) {
-  // board.gameArray[this.xcoordinate][this.ycoordinate] = player.name;
-//   if board.gameArray[this.position] === undefined {
-//     board.gameArray[this.position] = player.name
-//   }
-// };
-
-
-// Space.prototype.markedBy = function(board) {
-//   return board.gameArray[this.xcoordinate][this.ycoordinate];
-// };
-
 Board.prototype.mark = function(position, player) {
   if (this.gameArray.indexOf(position) !== -1 ) {
     this.gameArray[position] = player;
   }
 };
 
-Board.prototype.play = function(player, gameBoard) {
+Board.prototype.winner = function(player) {
 
-  if (gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === player.mark) {
+  var combo1 = this.gameArray[0] === player && this.gameArray[4] === player && this.gameArray[8] === player
+  var combo2 = this.gameArray[0] === player && this.gameArray[1] === player && this.gameArray[2] === player
+  var combo3 = this.gameArray[3] === player && this.gameArray[4] === player && this.gameArray[5] === player
+  var combo4 = this.gameArray[6] === player && this.gameArray[7] === player && this.gameArray[8] === player
+  var combo5 = this.gameArray[0] === player && this.gameArray[3] === player && this.gameArray[6] === player
+  var combo6 = this.gameArray[1] === player && this.gameArray[7] === player && this.gameArray[4] === player
+  var combo7 = this.gameArray[2] === player && this.gameArray[5] === player && this.gameArray[8] === player
+  var combo8 = this.gameArray[6] === player && this.gameArray[4] === player && this.gameArray[2] === player
+
+  if (combo1 || combo2 || combo3 || combo4 || combo5 || combo6 || combo7 || combo8) {
     return true;
-  } else if (gameBoard[0][0] === player.name && gameBoard[1][0] === player.name && gameBoard[2][0] === player.name) {
-    return true;
-  } else if (gameBoard[0][1] === player.name && gameBoard[1][1] === player.name && gameBoard[2][1] === player.name) {
-    return true;
-  } else if (gameBoard[0][2] === player.name && gameBoard[1][2] === player.name && gameBoard[2][2] === player.name) {
-    return true;
-  } else if (gameBoard[0][0] === player.name && gameBoard[0][1] === player.name && gameBoard[0][2] === player.name) {
-    return true;
-  } else if (gameBoard[1][0] === player.name && gameBoard[1][2] === player.name && gameBoard[1][1] === player.name) {
-    return true;
-  } else if (gameBoard[2][0] === player.name && gameBoard[2][1] === player.name && gameBoard[2][2] === player.name) {
-    return true;
-  } else if (gameBoard[0][0] === player.name && gameBoard[1][1] === player.name && gameBoard[2][2] === player.name) {
-    return true;
-  } else if (gameBoard[0][2] === player.name && gameBoard[1][1] === player.name && gameBoard[2][0] === player.name) {
-    return true;
+  } else if ((/\d/).test(this.gameArray) === false) {
+    return false
   } else {
-    return false;
+    return null;
   }
 };
 
@@ -109,8 +89,6 @@ $(document).ready(function() {
   $("#click-to-play").click(function() {
     $("#click-to-play").hide();
     $("#game").show();
-    game.playerX = playerX
-    game.playerO = playerO
     $("#player-turn").show();
     $("#player-name").text(playa.name);
   });
@@ -118,8 +96,8 @@ $(document).ready(function() {
 
   $("#zero-zero").click(function() {
     $("#zero-zero").empty().append('<img src="img/' + playa.mark + '">');
-    gameBoard.mark(0,0,playa);
-    blerg = gameBoard.play(playa, gameBoard.gameArray);
+    gameBoard.mark(0,playa);
+    blerg = gameBoard.winner(playa);
     $("#zero-zero").off();
     if (blerg === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
@@ -131,10 +109,10 @@ $(document).ready(function() {
   });
 
   $("#zero-one").click(function() {
-    gameBoard.mark(0,1,playa);
+    gameBoard.mark(3,playa);
     $("#zero-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#zero-one").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
+    if (gameBoard.winner(playa) === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
@@ -143,10 +121,10 @@ $(document).ready(function() {
   });
 
   $("#zero-two").click(function() {
-    gameBoard.mark(0,2,playa);
+    gameBoard.mark(6,playa);
     $("#zero-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#zero-two").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
+    if (gameBoard.winner(playa) === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
@@ -155,10 +133,10 @@ $(document).ready(function() {
   });
 
   $("#one-zero").click(function() {
-    gameBoard.mark(1,0,playa);
+    gameBoard.mark(1,playa);
     $("#one-zero").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-zero").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
+    if (gameBoard.winner(playa) === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
@@ -167,10 +145,10 @@ $(document).ready(function() {
   });
 
   $("#one-one").click(function() {
-    gameBoard.mark(1,1,playa);
+    gameBoard.mark(4,playa);
     $("#one-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-one").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
+    if (gameBoard.winner(playa) === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
@@ -179,10 +157,10 @@ $(document).ready(function() {
   });
 
   $("#one-two").click(function() {
-    gameBoard.mark(1,2,playa);
+    gameBoard.mark(7,playa);
     $("#one-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-two").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
+    if (gameBoard.winner(playa) === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
@@ -191,10 +169,10 @@ $(document).ready(function() {
   });
 
   $("#two-zero").click(function() {
-    gameBoard.mark(2,0,playa);
+    gameBoard.mark(2,playa);
     $("#two-zero").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-zero").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
+    if (gameBoard.winner(playa) === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
@@ -203,10 +181,10 @@ $(document).ready(function() {
   });
 
   $("#two-two").click(function() {
-    gameBoard.mark(2,2,playa);
+    gameBoard.mark(8,playa);
     $("#two-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-two").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
+    if (gameBoard.winner(playa) === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
@@ -215,10 +193,10 @@ $(document).ready(function() {
   });
 
   $("#two-one").click(function() {
-    gameBoard.mark(2,1,playa);
+    gameBoard.mark(5,playa);
     $("#two-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-one").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
+    if (gameBoard.winner(playa) === true) {
       $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()

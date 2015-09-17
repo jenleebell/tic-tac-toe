@@ -1,36 +1,110 @@
 <!DOCTYPE>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/skeleton.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/normalize.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <h1>Tic Tac Toe</h1>
-    <h2 id="winner">Someone Won, figure it out</h2>
     <div class="container">
-      <div id="name">
-        <table class="table">
-          <tr>
-            <span class="play"><td id="zero-zero"></td></span>
-            <span class="play"><td id="one-zero"></td></span>
-            <span class="play"><td id="two-zero"></td></span>
-          </tr>
-          <tr>
-            <span class="play"><td id="zero-one"></td></span>
-            <span class="play"><td id="one-one"></td></span>
-            <span class="play"><td id="two-one"></td></span>
-          </tr>
-          <tr>
-            <span class="play"><td id="zero-two"></td></span>
-            <span class="play"><td id="one-two"></td></span>
-            <span class="play"><td id="two-two"></td></span>
-          </tr>
-        </table>
+      <h1>Tic Tac Toe</h1>
+      <h2 id="winner">Someone Won, figure it out</h2>
+      <div id="messages">
+        <div id="player1-turn">
+          <p><span id="player1-name"></span>, it's your turn.</p>
+        </div>
+        <div id="player2-turn">
+          <p><span id="player2-name"></span> it's your turn.</p>
+        </div>
+      </div>
+
+      <form id="player1-piece" class="twelve columns">
+        <h4>Player 1</h4>
+        <div class="row">
+          <input type="text" id="player1Name" placeholder="Enter Your Name">
+        </div>
+        <div class="row">
+          <label for="player1Character">Choose a Character</label>
+          <select >
+            <option class="player1Character" value="ayeaye.jpg">Cute Lemur</option>
+            <option class="player1Character" value="boxer-dog.jpg">Adorable Puppy</option>
+            <option class="player1Character" value="llama.jpg">Kind Llama</option>
+          </select>
+        </div>
+        <div class="row">
+          <input class="button-primary" type="submit" value="Submit">
+        </div>
+      </form>
+
+      <form id="player2-piece" class="twelve columns">
+        <h4>Player 2</h4>
+        <div class="row">
+          <input type="text" id="player2Name" placeholder="Enter Your Name">
+        </div>
+        <div class="row">
+          <label for="player2Character">Choose a Character</label>
+          <select >
+            <option class="player2Character" value="llamafro.jpg">Kind Llama's Buddy</option>
+            <option class="player2Character" value="molerat.jpg">Small Fuzzy Creature</option>
+            <option class="player2Character" value="mostercat.jpg">Baby Kitten</option>
+          </select>
+        </div>
+        <div class="row">
+          <input class="button-primary" type="submit" value="Submit">
+        </div>
+      </form>
+
+      <div id="click-to-play">
+        <button class="button-primary" type="button" id="play-button">PLAY</button>
+      </div>
+
+      <div id="game">
+        <div class="row row-1">
+          <div id="zero-zero" class="four columns">
+          </div>
+          <div id="one-zero" class="four columns">
+          </div>
+          <div id="two-zero" class="four columns">
+          </div>
+        </div>
+        <div class="row row-2">
+          <div id="zero-one" class="four columns">
+          </div>
+          <div id="one-one" class="four columns">
+          </div>
+          <div id="two-one" class="four columns">
+          </div>
+        </div>
+        <div class="row row-3">
+          <div id="zero-two" class="four columns">
+          </div>
+          <div id="one-two" class="four columns">
+          </div>
+          <div id="two-two" class="four columns">
+          </div>
+        </div>
       </div>
     </div>
 
   </body>
 </html>
+<!-- <table class="table">
+  <tr>
+    <span class="play"><td id="zero-zero"></td></span>
+    <span class="play"><td id="one-zero"></td></span>
+    <span class="play"><td id="two-zero"></td></span>
+  </tr>
+  <tr>
+    <span class="play"><td id="zero-one"></td></span>
+    <span class="play"><td id="one-one"></td></span>
+    <span class="play"><td id="two-one"></td></span>
+  </tr>
+  <tr>
+    <span class="play"><td id="zero-two"></td></span>
+    <span class="play"><td id="one-two"></td></span>
+    <span class="play"><td id="two-two"></td></span>
+  </tr>
+</table> -->

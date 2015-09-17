@@ -1,4 +1,5 @@
-var Player = function(mark) {
+var Player = function(name, mark) {
+  this.name = name
   this.mark = mark;
 };
 
@@ -41,28 +42,7 @@ Board.prototype.markBy = function(x,y,player) {
 };
 
 Board.prototype.play = function(player, gameBoard) {
-  // if (gameBoard[0][0] == gameBoard[1][1] == gameBoard[2][2]) {
-  //   return true;
-  // } else if (gameBoard[0][0] == gameBoard[0][1] == gameBoard[0][2]) {
-  //   return true;
-  // } else if (gameBoard[0][0] == gameBoard[1][0] == gameBoard[2][0]) {
-  //   return true;
-  // } else if (gameBoard[0][1] == gameBoard[1][1] == gameBoard[2][1]) {
-  //   return true;
-  // } else if (gameBoard[0][2] == gameBoard[1][2] == gameBoard[2][2]) {
-  //   return true;
-  //   debugger;
-  // } else if (gameBoard[1][0] == gameBoard[1][2] == gameBoard[1][1]) {
-  //   return true;
-  // } else if (gameBoard[2][0] == gameBoard[2][1] == gameBoard[2][2]) {
-  //   return true;
-  // } else if (gameBoard[1][0] == gameBoard[2][1] == gameBoard[0][2]) {
-  //   return true;
-  // } else if (gameBoard[2][0] == gameBoard[1][1] == gameBoard[0][2]) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
+
   if ((gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === "X") || (gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === "O")) {
     return true;
   } else if ((gameBoard[0][0] === "X" && gameBoard[1][0] === "X" && gameBoard[2][0] === "X") || (gameBoard[0][0] === "O" && gameBoard[1][0] === "O" && gameBoard[2][0] === "O")) {
@@ -95,8 +75,8 @@ $(document).ready(function() {
   var gameBoard = new Board();
 
 
-  var turn = $("td#zero-zero").click(function() {
-    $("td#zero-zero").empty().append(playa.mark);
+  var turn = $("#zero-zero").click(function() {
+    $("#zero-zero").empty().append(playa.mark);
     gameBoard.markBy(0,0,playa);
     blerg = gameBoard.play(playa, gameBoard.gameArray);
     $("#zero-zero").off();
@@ -113,7 +93,7 @@ $(document).ready(function() {
 
   var turn = $("#zero-one").click(function() {
     gameBoard.markBy(0,1,playa);
-    $("td#zero-one").empty().append(playa.mark);
+    $("#zero-one").empty().append(playa.mark);
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
@@ -125,7 +105,7 @@ $(document).ready(function() {
 
   var turn = $("#zero-two").click(function() {
     gameBoard.markBy(0,2,playa);
-    $("td#zero-two").empty().append(playa.mark);
+    $("#zero-two").empty().append(playa.mark);
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
@@ -138,7 +118,7 @@ $(document).ready(function() {
 
   var turn = $("#one-zero").click(function() {
     gameBoard.markBy(1,0,playa);
-    $("td#one-zero").empty().append(playa.mark);
+    $("#one-zero").empty().append(playa.mark);
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
@@ -150,7 +130,7 @@ $(document).ready(function() {
 
   var turn = $("#one-one").click(function() {
     gameBoard.markBy(1,1,playa);
-    $("td#one-one").empty().append(playa.mark);
+    $("#one-one").empty().append(playa.mark);
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
@@ -162,7 +142,7 @@ $(document).ready(function() {
 
   var turn = $("#one-two").click(function() {
     gameBoard.markBy(1,2,playa);
-    $("td#one-two").empty().append(playa.mark);
+    $("#one-two").empty().append(playa.mark);
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
@@ -174,7 +154,7 @@ $(document).ready(function() {
 
   var turn = $("#two-zero").click(function() {
     gameBoard.markBy(2,0,playa);
-    $("td#two-zero").empty().append(playa.mark);
+    $("#two-zero").empty().append(playa.mark);
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
@@ -186,7 +166,7 @@ $(document).ready(function() {
 
   var turn = $("#two-two").click(function() {
     gameBoard.markBy(2,2,playa);
-    $("td#two-two").empty().append(playa.mark);
+    $("#two-two").empty().append(playa.mark);
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];
@@ -198,7 +178,7 @@ $(document).ready(function() {
 
   var turn = $("#two-one").click(function() {
     gameBoard.markBy(2,1,playa);
-    $("td#two-one").empty().append(playa.mark);
+    $("#two-one").empty().append(playa.mark);
     turnArr = Turn(turn, playerX, playerO);
     turn = turnArr[0];
     playa = turnArr[1];

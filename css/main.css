@@ -8,14 +8,14 @@ body {
   margin-top: 10%;
 }
 
-#zero-zero {
+#zero {
   border-bottom: 2px dashed #B8B8B8;
   border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
   cursor: pointer;
 }
-#one-zero {
+#one {
   border-bottom: 2px   dashed #B8B8B8;
   border-right: 2px  dashed #B8B8B8;
   height: 200px;
@@ -24,7 +24,7 @@ body {
   cursor: pointer;
 
 }
-#two-zero {
+#two {
   border-bottom: 2px   dashed #B8B8B8;
   height: 200px;
   width: 200px;
@@ -32,7 +32,7 @@ body {
   cursor: pointer;
 
 }
-#zero-one {
+#three {
   border-bottom: 2px   dashed #B8B8B8;
   border-right: 2px  dashed #B8B8B8;
   height: 200px;
@@ -40,7 +40,7 @@ body {
   cursor: pointer;
 
 }
-#one-one {
+#four {
   border-bottom: 2px   dashed #B8B8B8;
   border-right: 2px  dashed #B8B8B8;
   height: 200px;
@@ -49,7 +49,7 @@ body {
   cursor: pointer;
 
 }
-#two-one {
+#five {
   border-bottom: 2px   dashed #B8B8B8;
   height: 200px;
   width: 200px;
@@ -57,14 +57,14 @@ body {
   cursor: pointer;
 
 }
-#zero-two {
+#six {
   border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
   cursor: pointer;
 
 }
-#one-two {
+#seven {
   border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
@@ -72,7 +72,7 @@ body {
   cursor: pointer;
 
 }
-#two-two {
+#eight {
   height: 200px;
   width: 200px;
   margin-left: 0px;
@@ -126,5 +126,10 @@ a {
 
 a:hover {
   font-weight: 700;
-  color: #333;
+  color: #FF6666;
+}
+
+#winner {
+  font-size: 6rem;
+  color: #FF6666;
 }

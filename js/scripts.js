@@ -88,119 +88,208 @@ $(document).ready(function() {
 
   $("#click-to-play").click(function() {
     $("#click-to-play").hide();
-    $("#game").show();
+    $("#game").fadeIn(1000);
     $("#player-turn").show();
     $("#player-name").text(playa.name);
   });
 
 
-  $("#zero-zero").click(function() {
-    $("#zero-zero").empty().append('<img src="img/' + playa.mark + '">');
+  $("#zero").click(function() {
+    $("#picture0").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
     gameBoard.mark(0,playa);
     blerg = gameBoard.winner(playa);
-    $("#zero-zero").off();
+    $("#zero").off();
     if (blerg === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
 
   });
 
-  $("#zero-one").click(function() {
+  $("#three").click(function() {
     gameBoard.mark(3,playa);
-    $("#zero-one").empty().append('<img src="img/' + playa.mark + '">');
-    $("#zero-one").off();
+    $("#picture3").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
+    $("#three").off();
     if (gameBoard.winner(playa) === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
+
   });
 
-  $("#zero-two").click(function() {
+  $("#six").click(function() {
     gameBoard.mark(6,playa);
-    $("#zero-two").empty().append('<img src="img/' + playa.mark + '">');
-    $("#zero-two").off();
+    $("#picture6").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
+    $("#six").off();
     if (gameBoard.winner(playa) === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
+
   });
 
-  $("#one-zero").click(function() {
+  $("#one").click(function() {
     gameBoard.mark(1,playa);
-    $("#one-zero").empty().append('<img src="img/' + playa.mark + '">');
-    $("#one-zero").off();
+    $("#picture1").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
+    $("#one").off();
     if (gameBoard.winner(playa) === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
+
   });
 
-  $("#one-one").click(function() {
+  $("#four").click(function() {
     gameBoard.mark(4,playa);
-    $("#one-one").empty().append('<img src="img/' + playa.mark + '">');
-    $("#one-one").off();
+    $("#picture4").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
+    $("#four").off();
     if (gameBoard.winner(playa) === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
+
   });
 
-  $("#one-two").click(function() {
+  $("#seven").click(function() {
     gameBoard.mark(7,playa);
-    $("#one-two").empty().append('<img src="img/' + playa.mark + '">');
-    $("#one-two").off();
+    $("#picture7").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
+    $("#seven").off();
     if (gameBoard.winner(playa) === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
+
   });
 
-  $("#two-zero").click(function() {
+  $("#two").click(function() {
     gameBoard.mark(2,playa);
-    $("#two-zero").empty().append('<img src="img/' + playa.mark + '">');
-    $("#two-zero").off();
+    $("#picture2").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
+    $("#two").off();
     if (gameBoard.winner(playa) === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
+
   });
 
-  $("#two-two").click(function() {
+  $("#eight").click(function() {
     gameBoard.mark(8,playa);
-    $("#two-two").empty().append('<img src="img/' + playa.mark + '">');
-    $("#two-two").off();
+    $("#picture8").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
+    $("#eight").off();
     if (gameBoard.winner(playa) === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
+
   });
 
-  $("#two-one").click(function() {
+  $("#five").click(function() {
     gameBoard.mark(5,playa);
-    $("#two-one").empty().append('<img src="img/' + playa.mark + '">');
-    $("#two-one").off();
+    $("#picture5").empty().append('<img src="img/' + playa.mark + '">').hide().fadeIn(2000);
+    $("#five").off();
     if (gameBoard.winner(playa) === true) {
-      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
-    }
+      $("#winner").text("You won the game " + playa.name + " holy shit!").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else if (gameBoard.winner(playa) === false) {
+      $("#winner").text("Whoooooaaa that was a tie and pretty much the most mediocre game ever").slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown().slideUp().slideDown();
+      $("#game").fadeOut(1000);
+      $("#player-turn").fadeOut(1000);
+      $("h1").text("play again play again play againnnnnnnnnn");
+    } else {
     gameBoard.changeTurn()
     playa = gameBoard.turn
     $("#player-name").text(playa.name);
+    }
+
   });
 });

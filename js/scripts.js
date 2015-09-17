@@ -8,25 +8,36 @@ var Space = function(x, y) {
   this.ycoordinate = y;
 };
 
-var Board = function() {
+var Board = function(player1, player2) {
   this.gameArray = [];
   for(var i = 0; i < 3; i++)
   this.gameArray.push(['-','-','-']);
+  this.player1 = player1
+  this.player2 = player2
+  this.turn = player1
 };
 
-var Turn = function(tern, player1, player2) {
-  if (tern === 0) {
-    var playa = player1;
-    tern = 1;
-    var turnArray = [tern, playa]
-    return turnArray;
+// var Turn = function(tern, player1, player2) {
+//   if (tern === 0) {
+//     var playa = player1;
+//     tern = 1;
+//     var turnArray = [tern, playa]
+//     return turnArray;
+//   } else {
+//     playa = player2;
+//     tern = 0;
+//     turnArray = [tern, playa]
+//     return turnArray;
+//   }
+// };
+
+Board.prototype.changeTurn = function() {
+  if (this.turn === this.player1) {
+    this.turn = this.player2;
   } else {
-    playa = player2;
-    tern = 0;
-    turnArray = [tern, playa]
-    return turnArray;
+    this.turn = this.player1;
   }
-};
+}
 
 Space.prototype.markBy = function(player, board) {
   board.gameArray[this.xcoordinate][this.ycoordinate] = player.mark;
@@ -43,23 +54,23 @@ Board.prototype.markBy = function(x,y,player) {
 
 Board.prototype.play = function(player, gameBoard) {
 
-  if ((gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === "X") || (gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === "O")) {
+  if (gameBoard[0][0] && gameBoard[1][1] && gameBoard[2][2] === player.mark) {
     return true;
-  } else if ((gameBoard[0][0] === "X" && gameBoard[1][0] === "X" && gameBoard[2][0] === "X") || (gameBoard[0][0] === "O" && gameBoard[1][0] === "O" && gameBoard[2][0] === "O")) {
+  } else if (gameBoard[0][0] === player.mark && gameBoard[1][0] === player.mark && gameBoard[2][0] === player.mark) {
     return true;
-  } else if ((gameBoard[0][1] === "X" && gameBoard[1][1] === "X" && gameBoard[2][1] === "X") || (gameBoard[0][1] === "O" && gameBoard[1][1] === "O" && gameBoard[2][1] === "O")) {
+  } else if (gameBoard[0][1] === player.mark && gameBoard[1][1] === player.mark && gameBoard[2][1] === player.mark) {
     return true;
-  } else if ((gameBoard[0][2] === "X" && gameBoard[1][2] === "X" && gameBoard[2][2] === "X") || (gameBoard[0][2] === "O" && gameBoard[1][2] === "O" && gameBoard[2][2] === "O")) {
+  } else if (gameBoard[0][2] === player.mark && gameBoard[1][2] === player.mark && gameBoard[2][2] === player.mark) {
     return true;
-  } else if ((gameBoard[0][0] === "X" && gameBoard[0][1] === "X" && gameBoard[0][2] === "X") || (gameBoard[0][0] === "O" && gameBoard[0][1] === "O" && gameBoard[0][2] === "O")) {
+  } else if (gameBoard[0][0] === player.mark && gameBoard[0][1] === player.mark && gameBoard[0][2] === player.mark) {
     return true;
-  } else if ((gameBoard[1][0] === "X" && gameBoard[1][2] === "X" && gameBoard[1][1] === "X") || (gameBoard[1][0] === "O" && gameBoard[1][2] === "O" && gameBoard[1][1] === "O")) {
+  } else if (gameBoard[1][0] === player.mark && gameBoard[1][2] === player.mark && gameBoard[1][1] === player.mark) {
     return true;
-  } else if ((gameBoard[2][0] === "X" && gameBoard[2][1] === "X" && gameBoard[2][2] === "X") || (gameBoard[2][0] === "O" && gameBoard[2][1] === "O" && gameBoard[2][2] === "O")) {
+  } else if (gameBoard[2][0] === player.mark && gameBoard[2][1] === player.mark && gameBoard[2][2] === player.mark) {
     return true;
-  } else if ((gameBoard[0][0] === "X" && gameBoard[1][1] === "X" && gameBoard[2][2] === "X") || (gameBoard[0][0] === "O" && gameBoard[1][1] === "O" && gameBoard[2][2] === "O")) {
+  } else if (gameBoard[0][0] === player.mark && gameBoard[1][1] === player.mark && gameBoard[2][2] === player.mark) {
     return true;
-  } else if ((gameBoard[0][2] === "X" && gameBoard[1][1] === "X" && gameBoard[2][0] === "X") || (gameBoard[0][2] === "O" && gameBoard[1][1] === "O" && gameBoard[2][0] === "O")) {
+  } else if (gameBoard[0][2] === player.mark && gameBoard[1][1] === player.mark && gameBoard[2][0] === player.mark) {
     return true;
   } else {
     return false;
@@ -67,15 +78,53 @@ Board.prototype.play = function(player, gameBoard) {
 };
 
 $(document).ready(function() {
-  var playerX = new Player("X");
-  var playerO = new Player("O");
-  var turnArr = new Turn(0, playerX, playerO);
-  var playa = turnArr[1];
-  var turn = turnArr[0];
-  var gameBoard = new Board();
+  var playerX = new Player(null, null);
+  var playerO = new Player(null, null);
+  var gameBoard = new Board(playerX, playerO);
+  var playa = gameBoard.turn;
+
+  $("form#playerO-piece").hide();
+  $("#game").hide();
+  $("#click-to-play").hide()
+  $("#player-turn").hide();
+
+  $("form#playerX-piece").submit(function(event){
+    event.preventDefault()
+
+    var playerXName = $("input#playerXName").val();
+    var playerXCharacter = $(".playerXCharacter:selected").val();
+    playerX.name = playerXName;
+    playerX.mark = playerXCharacter;
+
+    $("form#playerX-piece").hide()
+    $("form#playerO-piece").show()
+
+  });
+
+  $("form#playerO-piece").submit(function(event){
+    event.preventDefault()
+
+    var playerOName = $("input#playerOName").val();
+    var playerOCharacter = $(".playerOCharacter:selected").val();
+    playerO.name = playerOName;
+    playerO.mark = playerOCharacter;
+
+    $("form#playerO-piece").hide()
+    $("#click-to-play").show()
+
+  });
+
+  $("#click-to-play").click(function() {
+    $("#click-to-play").hide();
+    $("#game").show();
+    game.playerX = playerX
+    game.playerO = playerO
+    $("#player-turn").show();
+    $("#player-name").text(playa.name);
+  });
 
 
-  var turn = $("#zero-zero").click(function() {
+  $("#zero-zero").click(function() {
     $("#zero-zero").empty().append(playa.mark);
     gameBoard.markBy(0,0,playa);
     blerg = gameBoard.play(playa, gameBoard.gameArray);
@@ -83,108 +132,105 @@ $(document).ready(function() {
     if (blerg === true) {
       $("h2#winner").show();
     }
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
-
-
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
 
   });
 
-  var turn = $("#zero-one").click(function() {
+  $("#zero-one").click(function() {
     gameBoard.markBy(0,1,playa);
     $("#zero-one").empty().append(playa.mark);
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
     $("#zero-one").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) == true) {
+    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
     }
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
   });
 
-  var turn = $("#zero-two").click(function() {
+  $("#zero-two").click(function() {
     gameBoard.markBy(0,2,playa);
     $("#zero-two").empty().append(playa.mark);
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
     $("#zero-two").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) == true) {
+    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
     }
-
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
   });
 
-  var turn = $("#one-zero").click(function() {
+  $("#one-zero").click(function() {
     gameBoard.markBy(1,0,playa);
     $("#one-zero").empty().append(playa.mark);
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
     $("#one-zero").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) == true) {
+    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
     }
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
   });
 
-  var turn = $("#one-one").click(function() {
+  $("#one-one").click(function() {
     gameBoard.markBy(1,1,playa);
     $("#one-one").empty().append(playa.mark);
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
     $("#one-one").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) == true) {
+    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
     }
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
   });
 
-  var turn = $("#one-two").click(function() {
+  $("#one-two").click(function() {
     gameBoard.markBy(1,2,playa);
     $("#one-two").empty().append(playa.mark);
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
     $("#one-two").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) == true) {
+    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
     }
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
   });
 
-  var turn = $("#two-zero").click(function() {
+  $("#two-zero").click(function() {
     gameBoard.markBy(2,0,playa);
     $("#two-zero").empty().append(playa.mark);
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
     $("#two-zero").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) == true) {
+    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
     }
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
   });
 
-  var turn = $("#two-two").click(function() {
+  $("#two-two").click(function() {
     gameBoard.markBy(2,2,playa);
     $("#two-two").empty().append(playa.mark);
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
     $("#two-two").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) == true) {
+    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
     }
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
   });
 
-  var turn = $("#two-one").click(function() {
+  $("#two-one").click(function() {
     gameBoard.markBy(2,1,playa);
     $("#two-one").empty().append(playa.mark);
-    turnArr = Turn(turn, playerX, playerO);
-    turn = turnArr[0];
-    playa = turnArr[1];
     $("#two-one").off();
-    if (gameBoard.play(playa, gameBoard.gameArray) == true) {
+    if (gameBoard.play(playa, gameBoard.gameArray) === true) {
       $("h2#winner").show();
     }
+    gameBoard.changeTurn()
+    playa = gameBoard.turn
+    $("#player-name").text(playa.name);
   });
 });

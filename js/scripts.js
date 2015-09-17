@@ -3,15 +3,15 @@ var Player = function(name, mark) {
   this.mark = mark;
 };
 
-var Space = function(x, y) {
-  this.xcoordinate = x;
-  this.ycoordinate = y;
+var Space = function(position) {
+  this.position = position
 };
 
 var Board = function(player1, player2) {
-  this.gameArray = [];
-  for(var i = 0; i < 3; i++)
-  this.gameArray.push(['-','-','-']);
+  this.gameArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  // for(var i = 0; i < 3; i++) {
+  //   this.gameArray.push(['-','-','-']);
+  // }
   this.player1 = player1
   this.player2 = player2
   this.turn = player1
@@ -25,17 +25,22 @@ Board.prototype.changeTurn = function() {
   }
 }
 
-Space.prototype.markBy = function(player, board) {
-  board.gameArray[this.xcoordinate][this.ycoordinate] = player.name;
-};
+// Space.prototype.markBy = function(player) {
+  // board.gameArray[this.xcoordinate][this.ycoordinate] = player.name;
+//   if board.gameArray[this.position] === undefined {
+//     board.gameArray[this.position] = player.name
+//   }
+// };
 
 
-Space.prototype.markedBy = function(board) {
-  return board.gameArray[this.xcoordinate][this.ycoordinate];
-};
+// Space.prototype.markedBy = function(board) {
+//   return board.gameArray[this.xcoordinate][this.ycoordinate];
+// };
 
-Board.prototype.markBy = function(x,y,player) {
-  this.gameArray[x][y] = player.name;
+Board.prototype.mark = function(position, player) {
+  if (this.gameArray.indexOf(position) !== -1 ) {
+    this.gameArray[position] = player;
+  }
 };
 
 Board.prototype.play = function(player, gameBoard) {
@@ -113,7 +118,7 @@ $(document).ready(function() {
 
   $("#zero-zero").click(function() {
     $("#zero-zero").empty().append('<img src="img/' + playa.mark + '">');
-    gameBoard.markBy(0,0,playa);
+    gameBoard.mark(0,0,playa);
     blerg = gameBoard.play(playa, gameBoard.gameArray);
     $("#zero-zero").off();
     if (blerg === true) {
@@ -126,7 +131,7 @@ $(document).ready(function() {
   });
 
   $("#zero-one").click(function() {
-    gameBoard.markBy(0,1,playa);
+    gameBoard.mark(0,1,playa);
     $("#zero-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#zero-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
@@ -138,7 +143,7 @@ $(document).ready(function() {
   });
 
   $("#zero-two").click(function() {
-    gameBoard.markBy(0,2,playa);
+    gameBoard.mark(0,2,playa);
     $("#zero-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#zero-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
@@ -150,7 +155,7 @@ $(document).ready(function() {
   });
 
   $("#one-zero").click(function() {
-    gameBoard.markBy(1,0,playa);
+    gameBoard.mark(1,0,playa);
     $("#one-zero").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-zero").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
@@ -162,7 +167,7 @@ $(document).ready(function() {
   });
 
   $("#one-one").click(function() {
-    gameBoard.markBy(1,1,playa);
+    gameBoard.mark(1,1,playa);
     $("#one-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
@@ -174,7 +179,7 @@ $(document).ready(function() {
   });
 
   $("#one-two").click(function() {
-    gameBoard.markBy(1,2,playa);
+    gameBoard.mark(1,2,playa);
     $("#one-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
@@ -186,7 +191,7 @@ $(document).ready(function() {
   });
 
   $("#two-zero").click(function() {
-    gameBoard.markBy(2,0,playa);
+    gameBoard.mark(2,0,playa);
     $("#two-zero").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-zero").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
@@ -198,7 +203,7 @@ $(document).ready(function() {
   });
 
   $("#two-two").click(function() {
-    gameBoard.markBy(2,2,playa);
+    gameBoard.mark(2,2,playa);
     $("#two-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
@@ -210,7 +215,7 @@ $(document).ready(function() {
   });
 
   $("#two-one").click(function() {
-    gameBoard.markBy(2,1,playa);
+    gameBoard.mark(2,1,playa);
     $("#two-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {

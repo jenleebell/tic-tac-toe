@@ -17,20 +17,6 @@ var Board = function(player1, player2) {
   this.turn = player1
 };
 
-// var Turn = function(tern, player1, player2) {
-//   if (tern === 0) {
-//     var playa = player1;
-//     tern = 1;
-//     var turnArray = [tern, playa]
-//     return turnArray;
-//   } else {
-//     playa = player2;
-//     tern = 0;
-//     turnArray = [tern, playa]
-//     return turnArray;
-//   }
-// };
-
 Board.prototype.changeTurn = function() {
   if (this.turn === this.player1) {
     this.turn = this.player2;
@@ -87,6 +73,7 @@ $(document).ready(function() {
   $("#game").hide();
   $("#click-to-play").hide()
   $("#player-turn").hide();
+  $("#winner").hide();
 
   $("form#playerX-piece").submit(function(event){
     event.preventDefault()
@@ -130,7 +117,7 @@ $(document).ready(function() {
     blerg = gameBoard.play(playa, gameBoard.gameArray);
     $("#zero-zero").off();
     if (blerg === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn
@@ -143,7 +130,7 @@ $(document).ready(function() {
     $("#zero-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#zero-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn
@@ -155,7 +142,7 @@ $(document).ready(function() {
     $("#zero-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#zero-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn
@@ -167,7 +154,7 @@ $(document).ready(function() {
     $("#one-zero").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-zero").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn
@@ -179,7 +166,7 @@ $(document).ready(function() {
     $("#one-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn
@@ -191,7 +178,7 @@ $(document).ready(function() {
     $("#one-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#one-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn
@@ -203,7 +190,7 @@ $(document).ready(function() {
     $("#two-zero").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-zero").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn
@@ -215,7 +202,7 @@ $(document).ready(function() {
     $("#two-two").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-two").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn
@@ -227,7 +214,7 @@ $(document).ready(function() {
     $("#two-one").empty().append('<img src="img/' + playa.mark + '">');
     $("#two-one").off();
     if (gameBoard.play(playa, gameBoard.gameArray) === true) {
-      $("h2#winner").show();
+      $("#winner").text("You won the game " + playa.name + " holy shit!").show();
     }
     gameBoard.changeTurn()
     playa = gameBoard.turn

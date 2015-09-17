@@ -1,31 +1,31 @@
 <!DOCTYPE>
 <html>
   <head>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/skeleton.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/normalize.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
-    <title>Tic Tac Toe</title>
+    <title>tic tac toe</title>
   </head>
   <body>
     <div class="container">
-      <h1>Tic Tac Toe</h1>
-      <h2 id="winner">Someone Won, figure it out</h2>
+      <a href="/Users/Guest/Desktop/tic-tac-toe/tic-tac-toe.html"><h1>tic tac toe</h1></a>
       <div id="messages">
+        <h3 id="winner"></h3>
         <div id="player-turn">
           <p><span id="player-name"></span>, it's your turn.</p>
         </div>
-
       </div>
 
       <form id="playerX-piece" class="twelve columns">
-        <h4>Player 1</h4>
-        <div class="row">
+        <div class="row form-row">
+          <label for="playerXName">player one</label>
           <input type="text" id="playerXName" placeholder="Enter Your Name">
         </div>
-        <div class="row">
-          <label for="playerXCharacter">Choose a Character</label>
+        <div class="row form-row">
+          <label for="playerXCharacter">choose a Character</label>
           <select >
             <option class="playerXCharacter" value="albertosaurus.png">Albertosaurus</option>
             <option class="playerXCharacter" value="anhinga.png">Pelican</option>
@@ -51,30 +51,19 @@
             <option class="playerXCharacter" value="camel1.png">Camel</option>
           </select>
         </div>
+        <br>
         <div class="row">
           <input class="button-primary" type="submit" value="Submit">
         </div>
       </form>
-
       <form id="playerO-piece" class="twelve columns">
-        <h4>Player 2</h4>
-        <div class="row">
+        <div class="row form-row">
+          <label for="playerYName">player two</label>
           <input type="text" id="playerOName" placeholder="Enter Your Name">
         </div>
-        <div class="row">
+        <div class="row form-row">
           <label for="playerOCharacter">Choose a Character</label>
           <select >
-            <option class="playerOCharacter" value="albertosaurus.png">Albertosaurus</option>
-            <option class="playerOCharacter" value="anhinga.png">Pelican</option>
-            <option class="playerOCharacter" value="antelope1.png">Antelope</option>
-            <option class="playerOCharacter" value="australia2.png">Sea Horse</option>
-            <option class="playerOCharacter" value="australia3.png">Kangaroo</option>
-            <option class="playerOCharacter" value="australia4.png">Fish</option>
-            <option class="playerOCharacter" value="australia5.png">Boomarang</option>
-            <option class="playerOCharacter" value="bear13.png">Bear</option>
-            <option class="playerOCharacter" value="beaver1.png">Beaver</option>
-            <option class="playerOCharacter" value="blade1.png">Sword</option>
-            <option class="playerOCharacter" value="buffalo1.png">Buffalo</option>
             <option class="playerOCharacter" value="bull8.png">Bull</option>
             <option class="playerOCharacter" value="camarosaurus.png">Camarosaurus</option>
             <option class="playerOCharacter" value="centrosaurus.png">Centrosaurus</option>
@@ -86,8 +75,20 @@
             <option class="playerOCharacter" value="emu.png">Emu</option>
             <option class="playerOCharacter" value="koala1.png">Koala</option>
             <option class="playerOCharacter" value="camel1.png">Camel</option>
+            <option class="playerOCharacter" value="albertosaurus.png">Albertosaurus</option>
+            <option class="playerOCharacter" value="anhinga.png">Pelican</option>
+            <option class="playerOCharacter" value="antelope1.png">Antelope</option>
+            <option class="playerOCharacter" value="australia2.png">Sea Horse</option>
+            <option class="playerOCharacter" value="australia3.png">Kangaroo</option>
+            <option class="playerOCharacter" value="australia4.png">Fish</option>
+            <option class="playerOCharacter" value="australia5.png">Boomarang</option>
+            <option class="playerOCharacter" value="bear13.png">Bear</option>
+            <option class="playerOCharacter" value="beaver1.png">Beaver</option>
+            <option class="playerOCharacter" value="blade1.png">Sword</option>
+            <option class="playerOCharacter" value="buffalo1.png">Buffalo</option>
           </select>
         </div>
+        <br>
         <div class="row">
           <input class="button-primary" type="submit" value="Submit">
         </div>
@@ -127,20 +128,3 @@
 
   </body>
 </html>
-<!-- <table class="table">
-  <tr>
-    <span class="play"><td id="zero-zero"></td></span>
-    <span class="play"><td id="one-zero"></td></span>
-    <span class="play"><td id="two-zero"></td></span>
-  </tr>
-  <tr>
-    <span class="play"><td id="zero-one"></td></span>
-    <span class="play"><td id="one-one"></td></span>
-    <span class="play"><td id="two-one"></td></span>
-  </tr>
-  <tr>
-    <span class="play"><td id="zero-two"></td></span>
-    <span class="play"><td id="one-two"></td></span>
-    <span class="play"><td id="two-two"></td></span>
-  </tr>
-</table> -->

@@ -1,6 +1,7 @@
-
-#winner {
-  display: none;
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #333
 }
 
 .play {
@@ -8,15 +9,15 @@
 }
 
 #zero-zero {
-  border-bottom: 3px solid #FF00FF;
-  border-right: 3px solid #FF00FF;
+  border-bottom: 2px dashed #B8B8B8;
+  border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
   cursor: pointer;
 }
 #one-zero {
-  border-bottom: 3px solid #FF00FF;
-  border-right: 3px solid #FF00FF;
+  border-bottom: 2px   dashed #B8B8B8;
+  border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
   margin-left: 0px;
@@ -24,7 +25,7 @@
 
 }
 #two-zero {
-  border-bottom: 3px solid #FF00FF;
+  border-bottom: 2px   dashed #B8B8B8;
   height: 200px;
   width: 200px;
   margin-left: 0px;
@@ -32,16 +33,16 @@
 
 }
 #zero-one {
-  border-bottom: 3px solid #FF00FF;
-  border-right: 3px solid #FF00FF;
+  border-bottom: 2px   dashed #B8B8B8;
+  border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
   cursor: pointer;
 
 }
 #one-one {
-  border-bottom: 3px solid #FF00FF;
-  border-right: 3px solid #FF00FF;
+  border-bottom: 2px   dashed #B8B8B8;
+  border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
   margin-left: 0px;
@@ -49,7 +50,7 @@
 
 }
 #two-one {
-  border-bottom: 3px solid #FF00FF;
+  border-bottom: 2px   dashed #B8B8B8;
   height: 200px;
   width: 200px;
   margin-left: 0px;
@@ -57,14 +58,14 @@
 
 }
 #zero-two {
-  border-right: 3px solid #FF00FF;
+  border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
   cursor: pointer;
 
 }
 #one-two {
-  border-right: 3px solid #FF00FF;
+  border-right: 2px  dashed #B8B8B8;
   height: 200px;
   width: 200px;
   margin-left: 0px;
@@ -80,24 +81,50 @@
 }
 
 #game {
-  margin-left: 30%;
+  margin-left: 19%;
 }
 
 h1 {
   text-align: center;
+  font-size: 350%;
 }
+
 
 form {
   text-align: center;
+  margin-top: 15%;
+}
+
+.form-row {
+  margin-top: 2%;
 }
 
 #click-to-play {
   text-align: center;
-  margin-top: 20%;
+  margin-top: 18%;
 }
 
 img {
   width: 150px;
   height: 150px;
-  align: center;
+  margin-left:10%;
+  margin-top:10%;
+}
+
+#messages {
+  text-align: center;
+}
+
+#player-name {
+  color: #FF6666;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  font-weight: 700;
+  color: #333;
 }
